@@ -15,10 +15,23 @@ Vagrant.configure('2') do |config|
     vb.customize ["modifyvm", :id, "--vram", "64"]
   end
 
+    config.vm.network "private_network", type: "dhcp"
+
   config.vm.provision 'shell', inline: 'apt-get install -y curl'
   config.vm.provision 'docker'
   config.vm.provision 'shell', inline: 'curl -SsL https://github.com/docker/compose/releases/download/1.5.0rc1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose'
   config.vm.provision 'shell', inline: 'chmod +x /usr/local/bin/docker-compose'
   config.vm.provision 'shell', inline: 'usermod -aG docker vagrant'
+
+    # vb1.vm.provision 'shell', inline: 'sudo apt-get update'
+    # vb1.vm.provision 'shell', inline: 'sudo apt-get install python-pip'
+    # vb1.vm.provision 'shell', inline: 'sudo pip install ansible'
+    # vb1.vm.provision 'shell', inline: 'sudo pip install paramiko PyYAML Jinja2 httplib2 six'
+    # vb1.vm.provision 'shell', inline: 'sudo pip install markupsafe'
+    # vb1.vm.provision 'shell', inline: 'echo "127.0.0.1" > ~ansible_hosts'
+    # vb1.vm.provision 'shell', inline: 'export ANSIBLE_INVENTORY=~/ansible_hosts'
+    # vb1.vm.provision 'shell', inline: 'ansible all -m ping --ask-pass'
+
+
 
 end

@@ -1,2 +1,4 @@
 .vagrant/
+dev/
 master-pub-key
+vagrant commands to get ansible
